@@ -8,13 +8,15 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 
 
-import Inventory from "./components/inventory.component";
-import ManageMenu from "./components/manage-menu.component";
-import Messages from "./components/messages.component";
+// import Inventory from "./components/inventory.component";
+// import ManageMenu from "./components/manage-menu.component";
+// import Messages from "./components/messages.component";
+// import RestockPurchases from "./components/restock-purchases.component";
+// import Checkout from './components/checkout.component';
 import Navbar from "./components/navbar.component";
-import RestockPurchases from "./components/restock-purchases.component";
-import Checkout from './components/checkout.component';
+import AdminDashboard from './components/AdminDashboard';
 
+import UserLogin from './components/UserLogin';
 
 
 //TODO Need to know what components go inside of ""
@@ -23,12 +25,8 @@ class App extends Component {
         return(
                 <Router>
                     <Navbar />
+                    <UserLogin/>
                     <br/>
-                    <Route path="/inventory" exact component={Inventory}/>
-                    <Route path="/manageMenu" component={ManageMenu}/>
-                    <Route path="/messages" component={Messages}/>
-                    <Route path="/restockPurchases" component={RestockPurchases}/>
-                    <Route path="/checkout" component={Checkout}/>
                 </Router>       
             );        
     }
