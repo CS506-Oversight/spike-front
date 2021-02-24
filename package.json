@@ -2,7 +2,6 @@
   "name": "autorack",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://127.0.0.1:5000/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.0",
     "@stripe/react-stripe-js": "^1.2.2",
@@ -50,6 +49,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://localhost:5000"
+  }
 }

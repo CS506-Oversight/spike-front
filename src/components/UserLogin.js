@@ -12,15 +12,18 @@ import { submitUser } from '../actions/auth';
 export default function UserLogin(props){
 
 
-    const [ username, setUser] = useState();
-    const  [password, setPassword] = useState();
+    const [username, setUser] = useState();
+    const [password, setPassword] = useState();
     
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(username, password);
-        let userData = [username,password];
+        let userData = {
+            username: username,
+            password: password,
+        }
         dispatch(submitUser(userData));
         //submitUser(userData);
     };

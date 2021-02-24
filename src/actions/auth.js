@@ -8,7 +8,8 @@ export const submitUser = userData => dispatch => {
         username: username,
         password: password,
     }
-    fetch('http://localhost:5000/check_pass', {       
+    console.log(data)
+    fetch('http://localhost:8787/check_pass', {       
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
