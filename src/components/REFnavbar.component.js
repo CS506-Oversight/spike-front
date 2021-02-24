@@ -8,22 +8,24 @@ export default class Navbar extends Component {
 
     render() {
         return (
-            //For staff and Admin
             <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
                 <Link to="/" className="navbar-brand">A Landing Page</Link>
                 <div className="collapse navbar-collapse">
                 <ul className="navbar-nav mr-auto">
                     <li className="navbar-nav mr-auto">
-                    <Link to="/messages" className="nav-link">Update menu(stock-wise)</Link>
+                    <Link to="/AdminDashboard" className="nav-link">Admin Dashboard</Link>
                     </li>
                     <li className="navbar-nav mr-auto">
-                    <Link to="/restockPurchases" className="nav-link">Print/Prioritize Orders</Link>
+                    <Link to="/CustomerDashboard" className="nav-link">Customer Dashboard</Link>
                     </li>
                     <li className="navbar-nav mr-auto">
-                    <Link to="/inventory" className="nav-link">Modify Menu</Link>
+                    <Link to="/Menu" className="nav-link">Menu</Link>
                     </li>
                     <li className="navbar-nav mr-auto">
-                    <Link to="/manageMenu" className="nav-link">Print Usage Reports</Link>
+                    <Link to="/Settings" className="nav-link">Settings</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/Pickup" className="nav-link">Pickup</Link>
                     </li>
                 </ul>
                 </div>
