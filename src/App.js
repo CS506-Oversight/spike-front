@@ -4,24 +4,32 @@ import { BrowserRouter as Router, Route } from
 import "bootstrap/dist/css/bootstrap.min.css";
 import { loadStripe } from "@stripe/stripe-js";
 
-import Inventory from "./components/inventory.component";
-import ManageMenu from "./components/manage-menu.component";
-import Messages from "./components/messages.component";
-import Navbar from "./components/navbar.component";
-import RestockPurchases from "./components/restock-purchases.component";
-import Checkout from './components/checkout.component';
+
+import Navbar from "./components/REFnavbar.component";
+import AdminDashboard from './components/AdminDashboard';
+import CustomerDashboard from './components/CustomerDashboard';
+import Menu from './components/Menu';
+import Settings from './components/Settings';
+import Pickup from './components/Pickup';
 
 //TODO Need to know what components go inside of ""
 function App() {
     return(
     <Router>
         <Navbar />
-        <br/>
-        <Route path="/inventory" exact component={Inventory}/>
-        <Route path="/manageMenu" component={ManageMenu}/>
-        <Route path="/messages" component={Messages}/>
-        <Route path="/restockPurchases" component={RestockPurchases}/>
-        <Route path="/checkout" component={Checkout}/>
+        {/* <AdminDashboard /> */}
+        {/* <CustomerDashboard /> */}
+        {/* <Menu /> */}
+        {/* <Settings /> */}
+        {/* <Pickup /> */}
+        
+        <Route path="/AdminDashboard" component={AdminDashboard} />
+        <Route path="/CustomerDashboard" component={CustomerDashboard} />
+        <Route path="/Menu" component={Menu} />
+        <Route path="/Settings" component={Settings} />
+        <Route path="/Pickup" component={Pickup} />
+
+
     </Router>
     );
 }
