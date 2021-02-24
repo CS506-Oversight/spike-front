@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import  { simpleAction } from '../actions/simpleAction';
 
-export default class Navbar extends Component {
-    constructor(props){
-        super(props);
+
+function UserTypeInfo(props) {
+
+}
+class Navbar extends Component {
+
+    componentDidMount(){
+        this.props.simpleAction();
     }
 
     render() {
@@ -30,3 +37,8 @@ export default class Navbar extends Component {
         );
     }
 }
+const mapStateToProps = state => ({
+    user: state.result,
+    userType: state.userType,
+})
+export default connect(mapStateToProps, { simpleAction })(Navbar);
