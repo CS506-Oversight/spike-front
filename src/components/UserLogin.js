@@ -1,47 +1,50 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, useDispatch  } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { propTypes } from 'react-bootstrap/esm/Image';
 
-function mapStateToProps(state){
-    return {
-        user: state.user,
-        password: state.password,
-    }
-}
+//actions
+import { submitUser } from '../actions/auth';
 
-function UserLogin(props){
-    let submit = (e) => {
-        e.preventDefault();
-        console.log('fire! 🚀');
-        const post = {
-            username: this.state.username,
-            password: this.state.password
-        }
+
+
+
+export default function UserLogin(props){
+
+
+    const [ username, setUser] = useState();
+    const  [password, setPassword] = useState();
     
-        this.props.submitUser(post);
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(username, password);
+        let userData = [username,password];
+        dispatch(submitUser(userData));
+        //submitUser(userData);
     };
+    const currentUser = useSelector( (state) => state.user);
+
+    const dispatch = useDispatch();
     
     return (
-        <Form>
+        <Form onSubmit={e => {handleSubmit(e)}}>
         <Form.Group controlId="inlineFormInput">
             <Form.Label>UserName</Form.Label>
-            <Form.Control type="text" placeholder="Enter Username" />
+            <Form.Control type="text" placeholder="Enter Username" value={username} onChange={e => setUser(e.target.value)}/>
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
+            <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}/>
         </Form.Group>
         <Form.Group controlId="formBasicCheckbox">
             <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
-        <Button variant="primary" type="submit" onSubmit={submit}>
+        <Button variant="primary" type="submit" >
             Login
         </Button>
         </Form>
     );
 }
-
-export default connect(mapStateToProps)(UserLogin);
