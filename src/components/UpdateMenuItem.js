@@ -97,7 +97,7 @@ export default class UpdateMenuItem extends Component {
             image: this.state.image,
         };
 
-        console.log(exercise);
+        console.log(menuItem);
 
         axios.post('http://localhost:3000//update_menu_item/' + this.props.match.params.id, menuItem)
             .then(res => console.log(res.data));
