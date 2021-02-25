@@ -53,19 +53,21 @@ export default function Checkout() {
         body: JSON.stringify({
           items: [
             {
-              price: "price_1INW0mEl7Dm9pM8q1V5HCaNE",
+              price: "price_1INiOuEl7Dm9pM8q4WYAhTFo",
               quantity: 1,
             },
             {
-              price: "price_1INVyvEl7Dm9pM8qNGNfw0O0",
+              price: "price_1INiQFEl7Dm9pM8q6tdIw2Fp",
               quantity: 2,
             },
             {
-              price: "price_1INWABEl7Dm9pM8qVPxcf8XU",
+              price: "price_1INiPtEl7Dm9pM8qFdWBn9UF",
               quantity: 1,
             },
           ],
+          metadata:{customer_id:"user_FmFT8rW6TXCq3blpVqkk"}
         }),
+
       }
     );
     const session = await response.json();
