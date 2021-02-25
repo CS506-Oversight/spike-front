@@ -1,4 +1,4 @@
-import { SUBMIT_USER } from './types';
+import { SUBMIT_USER, USER_LOGGED_IN } from './types';
 
 export const submitUser = userData => dispatch => {
     console.log('logging in user...' + userData);
@@ -8,14 +8,16 @@ export const submitUser = userData => dispatch => {
         username: username,
         password: password,
     }
-    console.log(data)
-    fetch('http://localhost:8787/check_pass', {       
+    fetch('http://localhost:5000/check_pass', {       
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
     }).then(res => res.json()).then(user =>
-            console.log(user)
-         );
+            dispatch({
+                type: USER_LOGGED_IN,
+                payload: user
+            })
+         ).catch(error => { const errorMsg = error.message});
 }

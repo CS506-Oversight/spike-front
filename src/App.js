@@ -20,16 +20,16 @@ import UserLogin from './components/UserLogin';
 
 
 //TODO Need to know what components go inside of ""
-class App extends Component {
-    render() {
-        return(
-                <Router>
-                    <Navbar />
-                    <UserLogin/>
-                    <br/>
-                </Router>       
-            );        
-    }
-}
 
-export default App;
+
+
+export default function App(){
+    return (
+        <Router>
+            <Navbar />
+            <br/>
+            <UserLogin/>
+            <br/>
+        </Router>  
+    );
+}

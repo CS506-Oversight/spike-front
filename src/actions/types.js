@@ -1,6 +1,6 @@
 export const SIMPLE_ACTION = 'SIMPLE_ACTION';
 export const SUBMIT_USER = 'SUBMIT_USER';
-
+export const USER_LOGGED_IN = 'USER_LOGGED_IN';
 
 
 

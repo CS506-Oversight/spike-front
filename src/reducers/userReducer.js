@@ -1,17 +1,25 @@
-// import { SUBMIT_USER } from '../actions/types';
+import { SUBMIT_USER, USER_LOGGED_IN } from '../actions/types';
 
-// const initialState = {
-//     user: {}
-// }
+const initialState = {
+    currentUser: {
+        isLoggedIn: false,
+        user: {}
+    }
+}
 
-// export default function(state = {}, action){
-//     switch(action.type){
-//         case SUBMIT_USER:
-//             return {
-//                 ...state,
-//                 user: action.payload
-//             };
-//         default:
-//             return state;
-//     }
-// }
+function userReducer (state = initialState, action){
+    switch(action.type){
+        case USER_LOGGED_IN:
+            return {
+                ...state,
+                currentUser: {
+                    isLoggedIn: true,
+                    user: action.payload
+                }   
+            };
+        default:
+            return state;
+    }
+}
+
+export default userReducer;
