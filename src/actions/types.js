@@ -8,7 +8,7 @@ export const USER_LOGGED_IN = 'USER_LOGGED_IN';
 //user stuff
 // export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 // export const LOGIN_USER_FAILED = 'LOGIN_USER_FAILED';
-// export const LOGIN_USER_REQUEST = 'LOGIN_USER_REQUEST';
+export const LOGIN_USER_REQUEST = 'LOGIN_USER_REQUEST';
 
 
 // //register stuff
@@ -37,6 +37,12 @@ export const USER_LOGGED_IN = 'USER_LOGGED_IN';
 // ADMIN_PRINT_REPORT_FAILED = 'ADMIN_PRINT_REPORT_FAILED';
 // ADMIN_PRINT_REPORT_REQUEST = 'ADMIN_PRINT_REPORT_REQUEST';
 
+
+
+//Alerts
+export const ALERT_SUCCESS = 'ALERT_SUCCESS';
+export const ALERT_ERROR = 'ALERT_ERROR';
+export const ALERT_CLEAR = 'ALERT_CLEAR';
 
 
 

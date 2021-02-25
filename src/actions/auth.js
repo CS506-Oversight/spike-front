@@ -1,4 +1,4 @@
-import { SUBMIT_USER, USER_LOGGED_IN } from './types';
+import { SUBMIT_USER, USER_LOGGED_IN, LOGIN_USER_REQUEST} from './types';
 
 export const submitUser = userData => dispatch => {
     console.log('logging in user...' + userData);
@@ -8,7 +8,7 @@ export const submitUser = userData => dispatch => {
         username: username,
         password: password,
     }
-    fetch('http://localhost:5000/check_pass', {       
+    fetch('/check_pass', {       
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -19,5 +19,11 @@ export const submitUser = userData => dispatch => {
                 type: USER_LOGGED_IN,
                 payload: user
             })
-         ).catch(error => { const errorMsg = error.message});
+         ).catch(error => {
+            // dispatch({
+            //     type
+            // })
+            const errorMsg = error.message;
+            console.log(errorMsg);
+         });
 }

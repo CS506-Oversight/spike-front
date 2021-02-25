@@ -47,8 +47,9 @@ function UserTypeInfo(props) {
 
 export default function NavBar(props){
     
-    const currentUser = useSelector((state) => state.clientUser);
-    const userType = currentUser.currentUser.user.type;
+    const clientUser = useSelector((state) => state.clientUser);
+    
+    const userType = clientUser.currentUser.user.type;
 
     return (
         <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
