@@ -3,8 +3,7 @@ import Button from "react-bootstrap/Button";
 import Accordion from 'react-bootstrap/Accordion';
 import Card from "react-bootstrap/Card";
 
-function AdminDashboard() {
-
+function AdminDashboard(props) {
   return (
     <Accordion defaultActiveKey="0">
       <Card>
