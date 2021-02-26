@@ -4,7 +4,10 @@ import thunkMiddleware from 'redux-thunk';
 import rootReducer from "./reducers";
 
 export default function configureStore(initialState = {}){
-    const store = createStore(rootReducer, compose(applyMiddleware( thunkMiddleware ), composeWithDevTools()));
+    const initalState = {
+
+    }
+    const store = createStore(rootReducer, initalState, compose(applyMiddleware( thunkMiddleware ), composeWithDevTools()));
 
     return store;
 }

@@ -1,6 +1,7 @@
 import { LOAD_RESTURANT_MENU_REQUEST, LOAD_RESTURANT_MENU_SUCCESS } from '../actions/types';
 
 const initalState = {
+    isloading: true,
     menuItems: {}
 }
 export default function customerReducer(state = initalState, action){
