@@ -20,9 +20,6 @@ export const submitUser = userData => dispatch => {
                 payload: user
             })
          ).catch(error => {
-            dispatch({
-                type
-            })
             const errorMsg = error.message;
             console.log(errorMsg);
          });
