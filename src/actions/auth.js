@@ -8,7 +8,7 @@ export const submitUser = userData => dispatch => {
         username: username,
         password: password,
     }
-    fetch('/check_pass', {       
+    fetch('http://localhost:5000/check_pass', {       
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -20,9 +20,9 @@ export const submitUser = userData => dispatch => {
                 payload: user
             })
          ).catch(error => {
-            // dispatch({
-            //     type
-            // })
+            dispatch({
+                type
+            })
             const errorMsg = error.message;
             console.log(errorMsg);
          });

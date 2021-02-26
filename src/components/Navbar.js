@@ -1,12 +1,13 @@
 import { render } from '@testing-library/react';
-import React, { Component } from 'react';
-import { connect, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import  { simpleAction } from '../actions/simpleAction';
 
 
 
 function CustomerNavBar(props) {
+
+    
     return(
         <div className="collapse navbar-collapse">
         <ul className="navbar-nav mr-auto">
@@ -26,16 +27,10 @@ function StaffNavBar(props) {
         <div className="collapse navbar-collapse">
         <ul className="navbar-nav mr-auto">
             <li className="navbar-nav mr-auto">
-            <Link to="/inventory" className="nav-link">Inventory</Link>
+            <Link to="/inventory" className="nav-link">Dashboard</Link>
             </li>
             <li className="navbar-nav mr-auto">
-            <Link to="/manageMenu" className="nav-link">Manage Menu</Link>
-            </li>
-            <li className="navbar-nav mr-auto">
-            <Link to="/messages" className="nav-link">Messages</Link>
-            </li>
-            <li className="navbar-nav mr-auto">
-            <Link to="/restockPurchases" className="nav-link">Restock RestockPurchases</Link>
+            <Link to="/manageMenu" className="nav-link">Settings</Link>
             </li>
         </ul>
         </div>
@@ -61,22 +56,3 @@ export default function NavBar(props){
         </nav>
     );
 }
-
-{/* class Navbar extends Component {
-
-    componentDidMount(){
-        this.props.simpleAction();
-    }
-
-    render() {
-        return (
-
-
-        );
-    }
-}
-const mapStateToProps = state => ({
-    user: state.result,
-    userType: state.userType,
-}) */}
-{/* export default connect(mapStateToProps, { simpleAction })(Navbar); */}

@@ -11,13 +11,15 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 
 
+
 // import Inventory from "./components/inventory.component";
 // import ManageMenu from "./components/manage-menu.component";
 // import Messages from "./components/messages.component";
 // import RestockPurchases from "./components/restock-purchases.component";
 // import Checkout from './components/checkout.component';
-import Navbar from "./components/navbar.component";
+import Navbar from "./components/Navbar";
 import AdminDashboard from './components/AdminDashboard';
+
 
 import UserLogin from './components/UserLogin';
 
