@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { loadStripe } from "@stripe/stripe-js";
 
 
-import Navbar from "./components/REFnavbar.component";
+import Navbar from "./components/Navbar";
 import AdminDashboard from './components/AdminDashboard';
 import CustomerDashboard from './components/CustomerDashboard';
 import Menu from './components/Menu';

@@ -14,8 +14,8 @@ import { submitUser } from '../actions/auth';
 export default function UserLogin(props){
 
 
-    const [username, setUser] = useState();
-    const [password, setPassword] = useState();
+    const [username, setUser] = useState("");
+    const [password, setPassword] = useState("");
     
 
 
