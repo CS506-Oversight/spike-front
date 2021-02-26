@@ -1,173 +1,106 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Check from "react-bootstrap/FormCheck";
 import axios from 'axios';
 
-export default class CreateMenuItem extends Component {
-    constructor(props) {
-        super(props);
-
-        this.onChangeName = this.onChangeName.bind(this);
-        this.onChangeDescription = this.onChangeDescription.bind(this);
-        this.onChangePrice = this.onChangePrice.bind(this);
-        this.onChangeType = this.onChangeType.bind(this);
-        this.onChangeInStock = this.onChangeInStock.bind(this);
-        this.onChangeImage = this.onChangeImage.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-
-        this.state = {
+const CreateMenuItem = () => {
+    const generateEmptyData = () => {
+        return {
             name: '',
             description: '',
             price: 0,
             type: '',
             in_stock: true,
             image: '',
-        }
+        };
     }
 
-    componentDidMount() {
-        axios.get('http://localhost:3000/get_menu')
-            .then(response => {
-                if (response.data.length > 0) {
-                    this.setState({
-                    /*    items: response.data.map(item => item.name),
-                        itemName: response.data[0].name */
-                    });
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-    }
+    const [data, setData] = React.useState(generateEmptyData());
+    // 0 for not sent, 1 for sent and success, 2 for sent and failed
+    const [dataSent, setDataSent] = React.useState(0);
 
-    onChangeName(e) {
-        this.setState({
-            name: e.target.value
+    const onValueChanged = (fieldName) => (e) => {
+        setData({
+            ...data,
+            [fieldName]: e.target.value
         });
     }
 
-    onChangeDescription(e) {
-        this.setState({
-            description: e.target.value
-        });
-    }
-
-    onChangePrice(e) {
-        this.setState({
-            price: e.target.value
-        });
-    }
-
-    onChangeType(e) {
-        this.setState({
-            type: e.target.value
-        });
-    }
-
-    onChangeInStock(e) {
-        this.setState({
-            in_stock: e.target.value
-        });
-    }
-
-    onChangeImage(e) {
-        this.setState({
-            image: e.target.value
-        });
-    }
-
-    onSubmit(e) {
+    const onSubmit = (e) => {
         e.preventDefault();
 
-        const menuItem = {
-            name: this.state.name,
-            description: this.state.description,
-            price: this.state.price,
-            type: this.state.type,
-            in_stock: this.state.in_stock,
-            image: this.state.image,
-        };
+        console.log(data);
 
-        console.log(item);
+        axios.post('http://localhost:3000/create_menu_item', data)
+            .then(res => {
+                console.log(res.data);
 
-        axios.post('http://localhost:3000/create_menu_item', menuItem)
-            .then(res => console.log(res.data));
+                setDataSent(res.status === 200 ? 1 : 2);
+            });
 
-        window.location = '/';
+        setData(generateEmptyData());
     }
 
-    render() {
-        return (
-            <div>
-                <h3>Create New Menu Item</h3>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Item Name: </label>
-                        <select ref="userInput"
-                                required
-                                className="form-control"
-                                value={this.state.name}
-                                onChange={this.onChangeName}>
-
-                            {
-                                this.state.items.map(function(item) {
-                                    return <option
-                                        key={item}
-                                        value={item}>{item}
-                                    </option>;
-                                })
-                            }
-
-                        </select>
+    return (
+        <div>
+            <h3>Create New Menu Item</h3>
+            <form onSubmit={onSubmit}>
+                <div className="form-group">
+                    <label>Item Name: </label>
+                    <input type="text"
+                           required
+                           className="form-control"
+                           value={data.name}
+                           onChange={onValueChanged('name')}/>
+                </div>
+                <div className="form-group">
+                    <label>Item Description: </label>
+                    <input required
+                           className="form-control"
+                           value={data.description}
+                           onChange={onValueChanged('description')}
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Price (in dollars): </label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        value={data.price}
+                        onChange={onValueChanged('price')}
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Type of the Item (e.g. drink, meal, etc.)): </label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        value={data.type}
+                        onChange={onValueChanged('type')}
+                    />
+                </div>
+                <div className="form-group">
+                    <Check type="checkbox" label="Item in stock" value={data.in_stock}
+                           onChange={onValueChanged('in_stock')}/>
+                </div>
+                <div className="form-group">
+                    <label>Image URL</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        value={data.image}
+                        onChange={onValueChanged('image')}
+                    />
+                </div>
+                <div className="form-group">
+                    <input type="submit" value="Create Menu Item" className="btn btn-primary"/>
+                    <div className="d-inline ml-3">
+                        {dataSent === 1 && <span className="text-success">Item Created!</span>}
+                        {dataSent === 2 && <span className="text-danger">Item failed to create.</span>}
                     </div>
-                    <div className="form-group">
-                        <label>Item Description: </label>
-                        <input  type="text"
-                                required
-                                className="form-control"
-                                value={this.state.description}
-                                onChange={this.onChangeDescription}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Price (in dollars): </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            value={this.state.price}
-                            onChange={this.onChangePrice}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Type of the Item (e.g. drink, meal, etc.)): </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            value={this.state.type}
-                            onChange={this.onChangeType}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>:Is the Item in Stock? </label>
-                        <input
-                            type="boolean"
-                            className="form-control"
-                            value={this.state.in_stock}
-                            onChange={this.onChangeInStock}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>:Image URL </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            value={this.state.image}
-                            onChange={this.onChangeImage}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <input type="submit" value="Create Menu Item" className="btn btn-primary" />
-                    </div>
-                </form>
-            </div>
-        )
-    }
+                </div>
+            </form>
+        </div>
+    );
 }
+
+export default CreateMenuItem;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
 
 export default class UpdateMenuItem extends Component {
@@ -24,10 +24,11 @@ export default class UpdateMenuItem extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3000/get_menu'+this.props.match.params.id)
+        axios.get('http://localhost:3000/get_menu')
             .then(response => {
-                this.setState({
+                console.log(response);
 
+                this.setState({
                     name: response.data.name,
                     description: response.data.description,
                     price: response.data.price,
@@ -42,7 +43,7 @@ export default class UpdateMenuItem extends Component {
 
         axios.get('http://localhost:3000/get_menu')
             .then(response => {
-                this.setState({ items: response.data.map(item => item.name) });
+                this.setState({items: response.data.map(item => item.name)});
             })
             .catch((error) => {
                 console.log(error);
@@ -99,7 +100,7 @@ export default class UpdateMenuItem extends Component {
 
         console.log(menuItem);
 
-        axios.post('http://localhost:3000//update_menu_item/' + this.props.match.params.id, menuItem)
+        axios.post('http://localhost:3000/update_menu_item/' + this.props.match.params.id, menuItem)
             .then(res => console.log(res.data));
 
         window.location = '/';
@@ -108,7 +109,7 @@ export default class UpdateMenuItem extends Component {
     render() {
         return (
             <div>
-                <h3>Create New Menu Item</h3>
+                <h3>Update Menu Item</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Item Name: </label>
@@ -117,25 +118,23 @@ export default class UpdateMenuItem extends Component {
                                 className="form-control"
                                 value={this.state.name}
                                 onChange={this.onChangeName}>
-
                             {
-                                this.state.items.map(function(item) {
+                                this.state.items?.map(function (item) {
                                     return <option
                                         key={item}
                                         value={item}>{item}
                                     </option>;
                                 })
                             }
-
                         </select>
                     </div>
                     <div className="form-group">
                         <label>Item Description: </label>
-                        <input  type="text"
-                                required
-                                className="form-control"
-                                value={this.state.description}
-                                onChange={this.onChangeDescription}
+                        <input type="text"
+                               required
+                               className="form-control"
+                               value={this.state.description}
+                               onChange={this.onChangeDescription}
                         />
                     </div>
                     <div className="form-group">
@@ -175,7 +174,7 @@ export default class UpdateMenuItem extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <input type="submit" value="Edit Menu Item" className="btn btn-primary" />
+                        <input type="submit" value="Edit Menu Item" className="btn btn-primary"/>
                     </div>
                 </form>
             </div>
