@@ -14,6 +14,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import Navbar from "./components/Navbar";
 import AdminDashboard from './components/AdminDashboard';
 import Menu from './components/Menu';
+import Settings from './components/Settings';
 
 
 import UserLogin from './components/UserLogin';
@@ -36,12 +37,12 @@ export default function App(){
     return (
         <Router>
             <Navbar />
-            {/* <br/>
+            <br/>
             {isLoggedIn ? <br/> : <UserLogin/>}
             
-            <br/> */}
+            <br/>
 
-            <Menu />
+            {/* <Menu /> */}
 
 
         </Router>  

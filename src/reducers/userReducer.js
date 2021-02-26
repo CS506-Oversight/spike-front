@@ -1,4 +1,4 @@
-import { SUBMIT_USER, USER_LOGGED_IN } from '../actions/types';
+import { SUBMIT_USER, USER_LOGGED_IN, UPDATE_USER } from '../actions/types';
 
 const initialState = {
     currentUser: {
@@ -17,6 +17,14 @@ function userReducer (state = initialState, action){
                     user: action.payload
                 }   
             };
+        case UPDATE_USER:
+            return{
+                ...state,
+                currentUser: {
+                    isLoggedIn: true,
+                    user: action.payload
+                }
+            }
         default:
             return state;
     }
