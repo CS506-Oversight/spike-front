@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
 import { useSelector, useDispatch } from 'react-redux';
 
 //actions
@@ -31,34 +32,59 @@ export default function Settings(props) {
 
     };
     
+    
 
     return (
-        <Container>
+        
+        
+        <Container style={{height: '80px', width : '600px'}}>
             <Form onSubmit={e => {handleChange(e)}}>
-                <Form.Group controlId="inlineFormInput">
-                    <Form.Label>Change Username</Form.Label>
-                    <Form.Control type="text" placeholder="Enter New Username" value={username} onChange={e => setUser(e.target.value)} />
-                </Form.Group>
+                <Card>
+                    <Card.Header>
+                        <h5>Enter Username</h5>
+                    </Card.Header>
+                    <Form.Group controlId="inlineFormInput">
+                            
+                        <Form.Control type="text" placeholder="Enter New or Current Username" value={username} onChange={e => setUser(e.target.value)} />
+                        </Form.Group>
 
-                <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Change Password</Form.Label>
-                    <Form.Control type="text" placeholder="Enter New Password" value={password} onChange={e => setPassword(e.target.value)}/>
-                </Form.Group>
 
-                <Form.Group controlId="inlineFormInput">
-                    <Form.Label>Change Phone Number</Form.Label>
-                    <Form.Control type="text" placeholder="Enter New Phone Number" value={phone} onChange={e => setPhone(e.target.value)} />
-                </Form.Group>
+                    <Form.Group controlId="formBasicPassword">
+                    <Card.Header>
+                        <h5>Enter Password</h5>
+                    </Card.Header>
+                        <Form.Control type="text" placeholder="Enter New or Current Password" value={password} onChange={e => setPassword(e.target.value)}/>
+                    </Form.Group>
 
-                <Form.Group controlId="inlineFormInput">
-                    <Form.Label>Change Address</Form.Label>
-                    <Form.Control type="text" placeholder="Enter New Address" value={address} onChange={e => setAddr(e.target.value)} />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Update Settings
-                </Button>
 
+                    <Form.Group controlId="inlineFormInput">
+                    <Card.Header>
+                        <h5>Enter Phone Number</h5>
+                    </Card.Header>
+                        <Form.Control type="text" placeholder="Enter New or Current Phone Number" value={phone} onChange={e => setPhone(e.target.value)} />
+                    </Form.Group>
+
+
+                    <Form.Group controlId="inlineFormInput">
+                    <Card.Header>
+                        <h5>Enter Address</h5>
+                    </Card.Header>
+                        <Form.Control type="text" placeholder="Enter New or Current Address" value={address} onChange={e => setAddr(e.target.value)} />
+                        <Form.Text className="text-muted">
+                            Please enter all fields. For any 
+                            setting that you do not want to change,
+                            enter your current information.
+                        </Form.Text>
+                    </Form.Group>
+                    
+                    <Button style={{height: '40px', width : '200px'}} variant="primary" type="submit">
+                        Update Settings
+                    </Button>
+                    
+                </Card>
+                <br/>
             </Form>
-        </Container>
+         </Container>   
+        
     );
 } 
