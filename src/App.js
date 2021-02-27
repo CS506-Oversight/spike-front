@@ -18,7 +18,6 @@ import Cart from './components/Cart';
 import CreateMenuItem from './components/CreateMenuItem';
 import CustomerDashboard from './components/CustomerDashboard';
 import Menu from './components/Menu';
-import Orders from './components/Orders';
 import Pickup from './components/Pickup';
 import Report from './components/Report';
 import Settings from './components/Settings';
