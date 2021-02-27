@@ -2,38 +2,51 @@ import { render } from '@testing-library/react';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons'
+import Navbar from "react-bootstrap/Navbar";
 
 function CustomerNavBar(props) {
 
     const clientUser = useSelector((state) => state.clientUser);
     
     return(
-            <Navbar.Collapse id="collapse navbar-collapse" className="justify-content-end">
-                <Nav className="mr-auto">
-                    <Nav.Link href="/order">Place Order</Nav.Link>
-                    <Nav.Link href="/settings">Settings</Nav.Link>
-                </Nav>
-                <Nav>
-                    <Nav.Item className="d-inline-block align-top">
-                    <FontAwesomeIcon icon={faShoppingBasket} color="white" size="2x" fixedWidth />
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Navbar.Text className="justify-content-end">
-                            
-                            {props.givenUser.currentUser.isLoggedIn && 
-                                <p>                                
-                                    Signed in as: {props.givenUser.currentUser.user.username}
-                                </p>
-                                
-                            }
-                        </Navbar.Text>
-                    </Nav.Item>
-                </Nav>
-            </Navbar.Collapse>
+        <div className="collapse navbar-collapse">
+        <ul className="navbar-nav mr-auto">
+        <li className="navbar-nav mr-auto">
+                    <Link to="/AdminDashboard" className="nav-link">Admin Dashboard</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/Cart" className="nav-link">Cart</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/CreateMenuItem" className="nav-link">Create Menu Item</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/CreateUser" className="nav-link">Create User</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/CustomerDashboard" className="nav-link">Customer Dashboard</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/Menu" className="nav-link">Menu</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/Pickup" className="nav-link">Pickup</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/Report" className="nav-link">Report</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/Settings" className="nav-link">Settings</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/UpdateMenuItem" className="nav-link">Update Menu Item</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/" className="nav-link">User Login</Link>
+                    </li>
+
+        </ul>
+        </div>
     )
 }
 function StaffNavBar(props) {
@@ -41,27 +54,46 @@ function StaffNavBar(props) {
     const clientUser = useSelector((state) => state.clientUser);
 
     return (
-        <div>
-            <Navbar.Collapse id="collapse navbar-collapse" className="justify-content-end">
-                <Nav className="mr-auto">
-                    <Nav.Link href="/dashboard">Dashboard</Nav.Link>
-                    <Nav.Link href="/settings">Settings</Nav.Link>
-                </Nav>
-                <Nav>
-                    <Navbar.Text className="justify-content-end">
-                        {props.givenUser.currentUser.isLoggedIn && 
-                            <div>
-                            Signed in as: {props.givenUser.currentUser.user.username}
-                            </div>             
-                        }
-                        
-                    </Navbar.Text>
-                </Nav>
-
-            </Navbar.Collapse>
+        <div className="collapse navbar-collapse">
+        <ul className="navbar-nav mr-auto">
+        <li className="navbar-nav mr-auto">
+                    <Link to="/AdminDashboard" className="nav-link">Admin Dashboard</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/Cart" className="nav-link">Cart</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/CreateMenuItem" className="nav-link">Create Menu Item</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/CreateUser" className="nav-link">Create User</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/CustomerDashboard" className="nav-link">Customer Dashboard</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/Menu" className="nav-link">Menu</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/Pickup" className="nav-link">Pickup</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/Report" className="nav-link">Report</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/Settings" className="nav-link">Settings</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/UpdateMenuItem" className="nav-link">Update Menu Item</Link>
+                    </li>
+                    <li className="navbar-nav mr-auto">
+                    <Link to="/" className="nav-link">User Login</Link>
+                    </li>
+        </ul>
         </div>
     )
 }
+
 export default function NavBar(props){
     
     const clientUser = useSelector((state) => state.clientUser);
