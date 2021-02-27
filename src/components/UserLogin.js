@@ -3,21 +3,21 @@ import { useSelector, useDispatch  } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container'
+import Container from 'react-bootstrap/Container';
 
 //actions
 import { submitUser } from '../actions/auth';
 
 
-
-
 export default function UserLogin(props){
 
-
+    
     const [username, setUser] = useState("");
     const [password, setPassword] = useState("");
+    const [usertype, setUserType] = useState("");
     
-
+    const currentUser = useSelector( (state) => state.clientUser.currentUser);
+    const isLoggedIn = useSelector( (state) => state.clientUser.currentUser.isLoggedIn);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -27,9 +27,8 @@ export default function UserLogin(props){
             password: password,
         }
         dispatch(submitUser(userData));
-
     };
-    const currentUser = useSelector( (state) => state.currentUser);
+    
 
     const dispatch = useDispatch();
     
@@ -46,7 +45,7 @@ export default function UserLogin(props){
                 <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}/>
             </Form.Group>
             <Form.Group as={Row} controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
+                <Form.Check type="checkbox" label="Remember me!" />
             </Form.Group>
             <Button variant="primary" type="submit" >
                 Login
