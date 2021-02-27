@@ -13,16 +13,16 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import Navbar from "./components/Navbar";
 import AdminDashboard from './components/AdminDashboard';
+import Cart from './components/Cart';
+import CreateMenuItem from './components/CreateMenuItem';
+import CustomerDashboard from './components/CustomerDashboard';
 import Menu from './components/Menu';
+import Orders from './components/Orders';
+import Pickup from './components/Pickup';
+import Report from './components/Settings';
 import Settings from './components/Settings';
-
-
+import UpdateMenuItem from './components/UpdateMenuItem';
 import UserLogin from './components/UserLogin';
-
-
-//TODO Need to know what components go inside of ""
-
-
 
 export default function App(){
 
@@ -37,12 +37,18 @@ export default function App(){
     return (
         <Router>
             <Navbar />
-            <br/>
-            {isLoggedIn ? <br/> : <UserLogin/>}
-            
-            <br/>
+            <Route path="/AdminDashboard" component={AdminDashboard} />
+            <Route path="/CustomerDashboard" component={CustomerDashboard} />
+            <Route path="/Menu" component={Menu} />
+            <Route path="/Settings" component={Settings} />
+            <Route path="/Pickup" component={Pickup} />    
+            <Route path="/CreateMenuItem" component={CreateMenuItem} />   
+            <Route path="/Orders" component={Orders} />   
+            <Route path="/Report" component={Report} />   
+            <Route path="/UpdateMenuItem" component={UpdateMenuItem} />   
+            <Route path="/UserLogin" component={UserLogin} />   
+            <Route path="/Cart" component={Cart} />  
 
-            {/* <Menu /> */}
 
 
         </Router>  
