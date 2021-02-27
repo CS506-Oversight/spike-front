@@ -33,7 +33,6 @@ function Menu() {
         <div>
             <CardDeck>
                 {isloading ? "Loading..." : currentMenu.menuItems.menu.map((item, index) => (
-                        
                         <Card key={index} style={sampleStyle}>
                         <Card.Img variant="top" src={item.img} />
                         <Card.Body>
@@ -49,7 +48,7 @@ function Menu() {
                             </Card.Text>
                             <Button variant="primary">Add to Cart</Button>
                         </Card.Body>    
-                        </Card>        
+                        </Card>         
                 ))}
             </CardDeck>
         </div>

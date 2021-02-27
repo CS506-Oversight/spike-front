@@ -1,27 +1,38 @@
 import { SUBMIT_USER, USER_LOGGED_IN, LOGIN_USER_REQUEST} from './types';
 
-export const submitUser = userData => dispatch => {
-    console.log('logging in user...' + userData);
+import axios from 'axios';
+
+export const submitUser= userData => (dispatch, getState) => {
+    
+    console.log('logging in user...' + userData.username);
     let username = userData.username;
     let password = userData.password;
+    //const token = getState().currentUser.token;
+
+    // if(token) {
+
+    // }
     let data = {
         username: username,
         password: password,
     }
-    fetch('http://localhost:5000/check_pass', {       
-        method: 'POST',
+    const config = {
         headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    }).then(res => res.json()).then(user =>
+            "Content-type": "application/json"
+        }
+    }
+    const body = JSON.stringify(data) 
+    axios.post('http://localhost:5000/check_pass', body, config)
+        .then(res => res).then(user => {
             dispatch({
                 type: USER_LOGGED_IN,
                 payload: user
             })
-         ).catch(error => {
+            localStorage.setItem("token", user.jwt);
+            console.log(user.type);
+        }).catch(error => {
             const errorMsg = error.message;
             console.log(errorMsg);
-         });
+        })
 }
 
