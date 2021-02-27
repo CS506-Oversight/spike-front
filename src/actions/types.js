@@ -43,6 +43,8 @@ export const UPDATE_USER = 'UPDATE_USER';
 // export const UPDATE_USER_FAILED = 'UPDATE_USER_FAILED';
 // export const UPDATE_USER_REQUEST = 'UPDATE_USER_REQUEST';
 
+//Create User Action
+export const CREATE_USER = 'CREATE_USER';
 
 //Alerts
 export const ALERT_SUCCESS = 'ALERT_SUCCESS';

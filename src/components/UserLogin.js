@@ -9,8 +9,6 @@ import Container from 'react-bootstrap/Container'
 import { submitUser } from '../actions/auth';
 
 
-
-
 export default function UserLogin(props){
 
 
