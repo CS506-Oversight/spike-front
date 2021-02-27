@@ -25,6 +25,14 @@ function userReducer (state = initialState, action){
                     user: action.payload
                 }
             }
+        // case CREATE_USER:
+        //     return {
+        //         ...state,
+        //         currentUser: {
+        //             isLoggedIn: true,
+        //             user: action.payload
+        //         }
+        //     }
         default:
             return state;
     }

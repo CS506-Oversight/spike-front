@@ -1,19 +1,13 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch  } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
-//import history from '../history';
 
 //actions
 import { submitUser } from '../actions/auth';
 
-
-
-
-import { withRouter } from "react-router-dom";
 
 export default function UserLogin(props){
 

@@ -7,7 +7,10 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 
 //actions
+<<<<<<< HEAD
 import { loadMenu } from '../actions/customerActions';
+=======
+>>>>>>> 6641a73b7ade2210cf12e2c7f4bd0e4bef444e85
 
 function Menu() {
     const dispatch = useDispatch();

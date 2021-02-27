@@ -44,6 +44,8 @@ export const UPDATE_USER = 'UPDATE_USER';
 // export const UPDATE_USER_FAILED = 'UPDATE_USER_FAILED';
 // export const UPDATE_USER_REQUEST = 'UPDATE_USER_REQUEST';
 
+//Create User Action
+export const CREATE_USER = 'CREATE_USER';
 
 //Customer Actions
 export const LOAD_RESTURANT_MENU_REQUEST = 'LOAD_RESTURANT_MENU_REQUEST'
