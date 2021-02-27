@@ -24,13 +24,7 @@ function CustomerNavBar(props) {
                     <Link to="/CreateUser" className="nav-link">Create User</Link>
                     </li>
                     <li className="navbar-nav mr-auto">
-                    <Link to="/CustomerDashboard" className="nav-link">Customer Dashboard</Link>
-                    </li>
-                    <li className="navbar-nav mr-auto">
                     <Link to="/Menu" className="nav-link">Menu</Link>
-                    </li>
-                    <li className="navbar-nav mr-auto">
-                    <Link to="/Pickup" className="nav-link">Pickup</Link>
                     </li>
                     <li className="navbar-nav mr-auto">
                     <Link to="/Report" className="nav-link">Report</Link>
@@ -69,13 +63,7 @@ function StaffNavBar(props) {
                     <Link to="/CreateUser" className="nav-link">Create User</Link>
                     </li>
                     <li className="navbar-nav mr-auto">
-                    <Link to="/CustomerDashboard" className="nav-link">Customer Dashboard</Link>
-                    </li>
-                    <li className="navbar-nav mr-auto">
                     <Link to="/Menu" className="nav-link">Menu</Link>
-                    </li>
-                    <li className="navbar-nav mr-auto">
-                    <Link to="/Pickup" className="nav-link">Pickup</Link>
                     </li>
                     <li className="navbar-nav mr-auto">
                     <Link to="/Report" className="nav-link">Report</Link>

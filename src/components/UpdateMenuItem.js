@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Check from "react-bootstrap/FormCheck";
+import Container from 'react-bootstrap/Container';
 
 const UpdateMenuItem = () => {
     const generateEmptyData = () => {
@@ -70,7 +71,10 @@ const UpdateMenuItem = () => {
     // FIXME: Error on submit unhandled
 
     return (
+
         <div>
+            <br></br>
+            <Container style={{height: '80px', width : '600px'}}>
             <h3>Update Menu Item</h3>
             <form onSubmit={onSubmit}>
                 <div className="form-group">
@@ -132,6 +136,7 @@ const UpdateMenuItem = () => {
                     </div>
                 </div>
             </form>
+            </Container>
         </div>
     )
 }

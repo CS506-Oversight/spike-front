@@ -5,6 +5,7 @@ import Card from "react-bootstrap/Card";
 import CardDeck from "react-bootstrap/CardDeck";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
+import Spinner from "react-bootstrap/Spinner"
 
 //actions
 import { loadMenu } from '../actions/customerActions';
@@ -28,11 +29,17 @@ function Menu() {
         flexGrow: 0
       };
 
+    const styles = {
+        marginLeft:'20px'
+    }
     return (
 
-        <div>
+        <div style={styles}>
+            <br></br>
             <CardDeck>
-                {isloading ? "Loading..." : currentMenu.menuItems.menu.map((item, index) => (
+                {isloading ? <Spinner animation="border" role="status">
+                                <span className="sr-only">Loading...</span>
+                            </Spinner> : currentMenu.menuItems.menu.map((item, index) => (
                         <Card key={index} style={sampleStyle}>
                         <Card.Img variant="top" src={item.img} />
                         <Card.Body>

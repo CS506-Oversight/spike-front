@@ -16,13 +16,12 @@ import NavBar from "./components/Navbar";
 import AdminDashboard from './components/AdminDashboard';
 import Cart from './components/Cart';
 import CreateMenuItem from './components/CreateMenuItem';
-import CustomerDashboard from './components/CustomerDashboard';
 import Menu from './components/Menu';
-import Pickup from './components/Pickup';
 import Report from './components/Report';
 import Settings from './components/Settings';
 import UpdateMenuItem from './components/UpdateMenuItem';
 import UserLogin from './components/UserLogin';
+import CreateUser from './components/CreateUser';
 
 export default function App(){
 
@@ -30,13 +29,12 @@ export default function App(){
         <Router>
             <NavBar />
             <Route path="/AdminDashboard" component={AdminDashboard} />
-            <Route path="/CustomerDashboard" component={CustomerDashboard} />
             <Route path="/Menu" component={Menu} />
-            <Route path="/Settings" component={Settings} />
-            <Route path="/Pickup" component={Pickup} />    
+            <Route path="/Settings" component={Settings} /> 
             <Route path="/CreateMenuItem" component={CreateMenuItem} />    
             <Route path="/Report" component={Report} />   
-            <Route path="/UpdateMenuItem" component={UpdateMenuItem} />   
+            <Route path="/UpdateMenuItem" component={UpdateMenuItem} /> 
+            <Route path="/CreateUser" component={CreateUser}  />
             <Route exact path="/" component={UserLogin} />   
             <Route path="/Cart" component={Cart} />  
 

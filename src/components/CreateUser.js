@@ -1,174 +1,108 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
+import { useDispatch } from 'react-redux';
 
-export default class CreateUser extends Component {
-    constructor(props) {
-        super(props);
+//actions
+import { createUser } from '../actions/settingsActions';
 
-        this.onChangeUsername = this.onChangeUsername.bind(this);
-        this.onChangePassword = this.onChangePassword.bind(this);
-        this.onChangePhone = this.onChangePhone.bind(this);
-        this.onChangeAddress = this.onChangeAddress.bind(this);
-        this.onChangeEmail = this.onChangeEmail.bind(this);
-        this.onChangeType = this.onChangeType.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
 
-        this.state = {
-            username: '',
-            password: '',
-            phone: 0,
-            address: '',
-            email: '',
-            type: ''
-        }
-    }
+export default function CreateUser(props) {
 
-    componentDidMount() {
-        axios.get('http://localhost:5000/users/')
-            .then(response => {
-                if (response.data.length > 0) {
-                    this.setState({
-                        users: response.data.map(user => user.username),
-                        username: response.data[0].username
-                    });
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-    }
+    const dispatch = useDispatch();
 
-    onChangeUsername(e) {
-        this.setState({
-            username: e.target.value
-        });
-    }
+    const[username, setUser] = useState("");
+    const[password, setPassword] = useState("");
+    const[phone, setPhone] = useState("");
+    const[address, setAddr] = useState("");
+    const[email, setEmail] = useState("");
+    const[type, setType] = useState("");
 
-    onChangePassword(e) {
-        this.setState({
-            password: e.target.value
-        });
-    }
 
-    onChangePhone(e) {
-        this.setState({
-            phone: e.target.value
-        });
-    }
 
-    onChangeAddress(e) {
-        this.setState({
-            address: e.target.value
-        });
-    }
-
-    onChangeEmail(e) {
-        this.setState({
-            email: e.target.value
-        });
-    }
-
-    onChangeType(e) {
-        this.setState({
-            type: e.target.value
-        });
-    }
-
-    onSubmit(e) {
+    const handleChange = (e) => {
         e.preventDefault();
+        let newUserData = {
+            username: username,
+            password: password,
+            phone: phone,
+            address: address,
+            email: email,
+            type: type,
+        }
+        dispatch(createUser(newUserData));
 
-        const newUser = {
-            username: this.state.username,
-            password: this.state.password,
-            phone: this.state.phone,
-            address: this.state.address,
-            email: this.state.email,
-            type: this.state.type,
-        };
+    };
+    
+    
 
-        console.log(newUser);
+    return (
+              
+        <Container style={{height: '80px', width : '600px'}}>
+            <br></br>
+            <Form onSubmit={e => {handleChange(e)}}>
+                <Card>
+                    <Card.Header>
+                        <h5>Create User</h5>
+                    </Card.Header>
+                    <Card.Header>
+                        <h5>Enter Username</h5>
+                    </Card.Header>
+                    <Form.Group controlId="inlineFormInput">
+                        <Form.Control type="text" placeholder="Enter Current Username" value={username} onChange={e => setUser(e.target.value)} />
+                    </Form.Group>
+                    <Card.Header>
+                        <h5>Enter Email</h5>
+                    </Card.Header>
+                    <Form.Group controlId="inlineFormInput">     
+                        <Form.Control type="text" placeholder="Enter Current Email" value={email} onChange={e => setEmail(e.target.value)} />
+                    </Form.Group>
 
-        axios.post('http://localhost:3000/create_user', newUser)
-            .then(res => console.log(res.data));
+                    <Form.Group controlId="formBasicPassword">
+                    <Card.Header>
+                        <h5>Enter Password</h5>
+                    </Card.Header>
+                        <Form.Control type="password" placeholder="Enter Current Password" value={password} onChange={e => setPassword(e.target.value)}/>
+                    </Form.Group>
 
-        window.location = '/';
-    }
 
-    render() {
-        return (
-            <div>
-                <h3>Create New User</h3>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Username: </label>
-                        <select ref="userInput"
-                                required
-                                className="form-control"
-                                value={this.state.username}
-                                onChange={this.onChangeUsername}>
-                            {
-                                this.state.users.map(function(user) {
-                                    return <option
-                                        key={user}
-                                        value={user}>{user}
-                                    </option>;
-                                })
-                            }
-                        </select>
-                    </div>
-                    <div className="form-group">
-                        <label>Password: </label>
-                        <input  type="text"
-                                required
-                                className="form-control"
-                                value={this.state.password}
-                                onChange={this.onChangePassword}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Phone Number (XXX-XXX-XXXX): </label>
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            value={this.state.phone}
-                            onChange={this.onChangePhone}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Address: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            value={this.state.address}
-                            onChange={this.onChangeAddress}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Email: </label>
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            value={this.state.email}
-                            onChange={this.onChangeEmail}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Type of User: (Customer, Administrator, Staff Member) </label>
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            value={this.state.type}
-                            onChange={this.onChangeType}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <input type="submit" value="Create New User" className="btn btn-primary" />
-                    </div>
-                </form>
-            </div>
-        )
-    }
-}
+                    <Form.Group controlId="inlineFormInput">
+                    <Card.Header>
+                        <h5>Enter Phone Number</h5>
+                    </Card.Header>
+                        <Form.Control type="text" placeholder="Enter Phone Number" value={phone} onChange={e => setPhone(e.target.value)} />
+                    </Form.Group>
+
+
+                    <Form.Group controlId="inlineFormInput">
+                    <Card.Header>
+                        <h5>Enter Address</h5>
+                    </Card.Header>
+                        <Form.Control type="text" placeholder="Enter Current Address" value={address} onChange={e => setAddr(e.target.value)} />
+                        <Form.Text className="text-muted">
+                            Please enter all fields.
+                        </Form.Text>
+                    </Form.Group>
+                    
+                    <Form.Group controlId="inlineFormInput">
+                        <Card.Header>
+                            <h5>Enter Type</h5>
+                        </Card.Header>
+                            <Form.Control as="select" placeholder="Enter Current Type" value={type} onChange={e => setType(e.target.value)} >
+                                <option>Customer</option>
+                                <option>Staff</option>
+                            </Form.Control>
+                    </Form.Group>
+                    
+                    <Button style={{height: '40px', width : '200px'}} variant="primary" type="submit">
+                        Update Settings
+                    </Button>
+                    
+                </Card>
+            </Form>
+         </Container>   
+        
+    );
+} 

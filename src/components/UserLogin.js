@@ -33,7 +33,9 @@ export default function UserLogin(props){
     const dispatch = useDispatch();
     
     return (
-        <Container fluid="md">
+        
+        <Container style={{height: '80px', width : '600px'}}>
+            <br></br>
             <Form onSubmit={e => {handleSubmit(e)}}>
             <Form.Group as={Row} sm={8} controlId="inlineFormInput">
                 <Form.Label>UserName</Form.Label>

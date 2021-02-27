@@ -29,6 +29,8 @@ function AdminDashboard() {
                                 <UpdateMenuItem/>
                             </Col>
                         </Row>
+                        <br></br>
+                        <br></br>
                         <Row>
                             <Col lg={12}>
                                 <Report/>

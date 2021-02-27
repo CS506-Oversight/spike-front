@@ -38,6 +38,7 @@ export default function Settings(props) {
         
         
         <Container style={{height: '80px', width : '600px'}}>
+            <br></br>
             <Form onSubmit={e => {handleChange(e)}}>
                 <Card>
                     <Card.Header>
