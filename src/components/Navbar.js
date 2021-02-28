@@ -102,7 +102,7 @@ export default function NavBar(props){
 
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
-            <Navbar.Brand href="/">AutoRack ORM</Navbar.Brand>
+            <Navbar.Brand href="/">BadgerBytes</Navbar.Brand>
             {userType == "admin" || userType == "staff"  ?
                 <StaffNavBar givenUser={clientUser} /> : <CustomerNavBar givenUser={clientUser} />
             }
